@@ -109,6 +109,20 @@
     <origin xyz="0 0 ${tower_sensor_plate_z_offset}"/>
   </xacro:tower_sensor_plate>
 
+  <!-- 3D and Imu sensors attached externally-->
+  <link name="ouster_frame"/>
+  <joint name="ouster_frame_fixed_joint" type="fixed">
+    <origin xyz="-22.6 -19.9 394.2" rpy="0 0 ${pi}" />
+    <parent link="base_link" />
+    <child link="ouster_frame" />
+  </joint>
+
+  <link name="xsense_frame"/>
+  <joint name="xsense_frame_fixed_joint" type="fixed">
+    <origin xyz="-11.8 -52.8 363.3" rpy="${pi} 0 0" />
+    <parent link="base_link" />
+    <child link="xsense_frame" />
+  </joint>
   <!-- Turtlebot4 sensor definitions -->
 
   <xacro:rplidar name="rplidar" parent_link="shell_link" gazebo="$(arg gazebo)">
